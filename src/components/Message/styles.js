@@ -19,6 +19,7 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   padding: 3px;
+  margin-left: 8px;
   max-width: 80%;
 `;
 

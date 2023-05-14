@@ -10,6 +10,7 @@ export const Container = styled.div`
 
 export const Button = styled.button`
     outline: none;
+    color: black;
     font-size: 18px;
     padding: 14px 18px;
     cursor: pointer;
