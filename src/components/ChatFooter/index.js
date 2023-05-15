@@ -17,6 +17,7 @@ const ChatFooter = ({ chatId }) => {
       user: user.email,
       photoURL: user.photoURL,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      TocadoJa: false,
     });
 
     setMessage("");

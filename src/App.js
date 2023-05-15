@@ -11,6 +11,8 @@ import Chat from './components/Chat/index';
 const App = () => {
     const [user, loading] = useAuthState(auth)
     const [userChat, setUserChat] = useState(null)
+    const [currentUserEmail, setCurrentUserEmail] = useState(null);
+
 
     useEffect(() => {
         if(user) {
@@ -18,6 +20,7 @@ const App = () => {
                 email: user.email,
                 photoURL: user.photoURL,
             })
+            setCurrentUserEmail(user.email)
         }
     }, [user])
 
@@ -28,7 +31,7 @@ const App = () => {
   return (
     <C.Container>
         <Sidebar setUserChat={setUserChat} userChat={userChat} />
-        <Chat userChat={userChat} />
+        <Chat userChat={userChat} currentUserEmail={currentUserEmail} />
     </C.Container>
   )
 }
