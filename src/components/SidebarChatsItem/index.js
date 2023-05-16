@@ -25,10 +25,12 @@ const SidebarChatsItem = ({ id, users, user, setUserChat, active }) => {
   }
 
   return (
-    <C.Container onClick={handleNewChat} className={active}>
-        {Avatar ? <C.Avatar src={Avatar?.photoURL} /> : <MdPerson />}
-          <C.Name>{item.split("@")[0]}</C.Name>
-    </C.Container>
+    <>
+      <C.Container onClick={handleNewChat} className={active}>
+          {Avatar ? <C.Avatar src={Avatar?.photoURL} /> : <MdPerson />}
+            <C.Name>{item.split("@")[0]}</C.Name>
+      </C.Container>
+    </>
   )
 }
 

@@ -27,7 +27,8 @@ const SidebarHeader = ({ setUserChat }) => {
       }
 
       db.collection("chats").add({
-        users: [user.email, emailInput]
+        users: [user.email, emailInput],
+        mensagemR: 0,
       })
     }
 

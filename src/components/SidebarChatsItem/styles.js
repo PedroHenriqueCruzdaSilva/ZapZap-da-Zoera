@@ -35,3 +35,8 @@ export const Avatar = styled.img`
   margin-right: 10px;
   min-width: fit-content;
 `;
+
+export const MessageCounter = styled.span`
+  background-color: red;
+  color: white;
+`;
