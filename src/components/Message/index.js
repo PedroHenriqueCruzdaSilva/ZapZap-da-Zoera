@@ -16,6 +16,7 @@ const Message = ({ user, message }) => {
     <C.Container>
       <C.Line className={userLoggedIn?.email === user ? "me" : ""}>
         <C.Content>
+          <C.MessageUser>{user}</C.MessageUser>
         {isImageMessage ? (
             <C.ImageContainer>
               <C.Image src={imageLink} alt={imageLink} />

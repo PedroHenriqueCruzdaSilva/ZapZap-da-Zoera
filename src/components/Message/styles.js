@@ -37,6 +37,15 @@ export const MessageDate = styled.span`
   margin-top: 5px;
 `;
 
+export const MessageUser = styled.span`
+  font-size: 12px;
+  color: #fff;
+  text-align: left;
+  height: 15px;
+  margin: -5px 5px 0;
+  margin-top: 2px;
+`;
+
 export const ImageContainer = styled.div`
   background-color: #202c33;
   border-radius: 10px;
