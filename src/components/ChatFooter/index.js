@@ -1,17 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import * as C from "./styles";
-import { MdSend } from "react-icons/md";
-import { auth, db } from "../../services/firebase";
+import { MdSend, MdAttachFile } from "react-icons/md";
+import { auth, db, storage } from "../../services/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import firebase from "firebase/compat/app";
 
 const ChatFooter = ({ chatId }) => {
+  const fileInputRef = useRef(null)
   const [user] = useAuthState(auth);
   const [message, setMessage] = useState("");
+  const [file, setFile] = useState(null);
 
   const usersInChatRef = db.collection("chats").doc(chatId);
 
   const handleSendMessage = (e) => {
+    if(message.length > 0) {
     e.preventDefault();
 
     db.collection("chats")
@@ -68,11 +71,59 @@ const ChatFooter = ({ chatId }) => {
       });
 
     setMessage("");
+  }};
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setFile(file);
+  };
+
+  const handleSendFile = () => {
+    if (file) {
+      const storageRef = storage.ref();
+      const fileRef = storageRef.child(file.name);
+
+      fileRef.put(file).then(() => {
+        fileRef.getDownloadURL().then((url) => {
+          db.collection("chats")
+            .doc(chatId)
+            .collection("messages")
+            .add({
+              message: `<img src="${url}" />`,
+              user: user.email,
+              photoURL: user.photoURL,
+              timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+              TocadoJa: false,
+            })
+            .catch((error) => {
+              console.error("Erro ao enviar o arquivo:", error);
+            });
+        });
+      });
+    }
+  };
+
+  const handleOpenFilePicker = () => {
+    fileInputRef.current.click();
   };
 
   return (
     <C.Container>
       <C.Form onSubmit={handleSendMessage}>
+          <MdAttachFile 
+            color="white" 
+            size={20}
+            onClick={handleOpenFilePicker} 
+            style={{ cursor: "pointer" }}
+          />
+      <C.File
+            id="file-upload"
+            type="file"
+            accept="image/*"
+            onChange={handleFileChange}
+            ref={fileInputRef}
+          />
+        <MdSend color="white" onClick={handleSendFile} />
         <C.Input
           placeholder="Mensagem"
           onChange={(e) => setMessage(e.target.value)}

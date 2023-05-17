@@ -8,11 +8,22 @@ const Message = ({ user, message }) => {
 
   const formattedTime = new Date(message?.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
+  const isImageMessage = message.message.includes('<img src="');
+
+  const imageLink = isImageMessage ? message.message.match(/<img src="([^"]+)" \/>/)[1] : null;
+
   return (
     <C.Container>
       <C.Line className={userLoggedIn?.email === user ? "me" : ""}>
         <C.Content>
-          <C.Message>{message.message}</C.Message>
+        {isImageMessage ? (
+            <C.ImageContainer>
+              <C.Image src={imageLink} alt={imageLink} />
+            </C.ImageContainer>
+          ) : (
+            // Renderiza a mensagem normalmente
+            <C.Message>{message.message}</C.Message>
+          )}
           <C.MessageDate>
             {formattedTime}
           </C.MessageDate>

@@ -34,4 +34,22 @@ export const MessageDate = styled.span`
   text-align: right;
   height: 15px;
   margin: -5px 5px 0;
+  margin-top: 5px;
 `;
+
+export const ImageContainer = styled.div`
+  background-color: #202c33;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 3px;
+  margin-left: 8px;
+  max-width: 100%;
+  max-height: 100%;
+`
+
+export const Image = styled.img`
+  width: 100%;
+  height: 100%;
+  padding: 3px;
+`

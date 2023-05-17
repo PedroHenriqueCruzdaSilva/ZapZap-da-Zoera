@@ -32,3 +32,7 @@ export const Input = styled.input`
   width: 100%;
   box-shadow: inset 0 0 1px 1px #0003;
 `;
+
+export const File = styled.input`
+  display: none;
+`
