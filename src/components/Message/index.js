@@ -16,7 +16,7 @@ const Message = ({ user, message }) => {
     <C.Container>
       <C.Line className={userLoggedIn?.email === user ? "me" : ""}>
         <C.Content>
-          <C.MessageUser>{user}</C.MessageUser>
+          <C.MessageUser>{user !== "samuraigamer100000@gmail.com" ? (user.split("@")[0]) : ("PH")}</C.MessageUser>
         {isImageMessage ? (
             <C.ImageContainer>
               <C.Image src={imageLink} alt={imageLink} />
