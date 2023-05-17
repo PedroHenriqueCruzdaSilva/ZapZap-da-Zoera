@@ -7,7 +7,7 @@ import Loading from "./components/Loading/index";
 import Sidebar from './components/Sidebar/index';
 import Chat from './components/Chat/index';
 import { Howl } from 'howler';
-import som from './assets/ain.mp3';
+import som from './assets/not.mp3';
 
 const App = () => {
   const [user, loading] = useAuthState(auth);
