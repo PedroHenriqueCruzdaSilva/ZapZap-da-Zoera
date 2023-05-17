@@ -100,6 +100,7 @@ const ChatFooter = ({ chatId }) => {
             });
         });
       });
+      setFile(null)
     }
   };
 
