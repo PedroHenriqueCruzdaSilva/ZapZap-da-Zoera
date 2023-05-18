@@ -11,13 +11,13 @@ const ChatFooter = ({ chatId }) => {
   const [message, setMessage] = useState("");
   const [file, setFile] = useState(null);
 
-  const usersInChatRef = db.collection("chats").doc(chatId);
+  //const usersInChatRef = db.collection("chats").doc(chatId);
 
   const handleSendMessage = (e) => {
-    if(message.length > 0) {
+    //if(message.length > 0) {
     e.preventDefault();
 
-    db.collection("chats")
+    /*db.collection("chats")
       .doc(chatId)
       .get()
       .then((doc) => {
@@ -30,7 +30,7 @@ const ChatFooter = ({ chatId }) => {
           .update({
             mensagemR: novaQuantidadeMensagens
           })
-      })
+      })*/
 
     db.collection("chats")
       .doc(chatId)
@@ -40,9 +40,9 @@ const ChatFooter = ({ chatId }) => {
         user: user.email,
         photoURL: user.photoURL,
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        TocadoJa: false,
+        //TocadoJa: false,
       })
-      .then(() => {
+      /*.then(() => {
         // Atualizar o número de mensagens recebidas apenas para os usuários no chat (exceto o remetente)
         usersInChatRef.get().then((doc) => {
           const chatData = doc.data();
@@ -65,13 +65,13 @@ const ChatFooter = ({ chatId }) => {
               console.error("Erro ao atualizar as mensagens recebidas:", error);
             });
         });
-      })
+      })*/
       .catch((error) => {
         console.error("Erro ao enviar a mensagem:", error);
       });
 
     setMessage("");
-  }};
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];

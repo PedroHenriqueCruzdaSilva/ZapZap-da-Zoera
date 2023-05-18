@@ -6,8 +6,8 @@ import Login from "./components/Login/index";
 import Loading from "./components/Loading/index";
 import Sidebar from './components/Sidebar/index';
 import Chat from './components/Chat/index';
-import { Howl } from 'howler';
-import som from './assets/not.mp3';
+/*import { Howl } from 'howler';
+import som from './assets/not.mp3';*/
 
 const App = () => {
   const [user, loading] = useAuthState(auth);
@@ -19,13 +19,13 @@ const App = () => {
       db.collection("users").doc(user.uid).set({
         email: user.email,
         photoURL: user.photoURL,
-        mensagens: 0,
+        //mensagens: 0,
       });
       setCurrentUserEmail(user.email);
     }
   }, [user]);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const sound = new Howl({
       src: [som],
       volume: 1,
@@ -57,7 +57,7 @@ const App = () => {
     return () => {
       sound.unload();
     };
-  }, [user]);
+  }, [user]);*/
 
   if (loading) return <Loading />;
   if (!user) return <Login />;

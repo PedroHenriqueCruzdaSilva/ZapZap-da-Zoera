@@ -22,7 +22,7 @@ const SidebarChats = ({ setUserChat, userChat }) => {
             id={item.id}
             users={item.data().users}
             user={user}
-            chatId={userChat?.chatId}
+            //chatId={userChat?.chatId}
             setUserChat={setUserChat}
             active={userChat?.chatId === item.id ? "active" : ""}
           />
